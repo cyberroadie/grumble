@@ -21,6 +21,8 @@ var blobStore blobstore.BlobStore
 func main() {
 	var err error
 
+	log.Print("Starting Grumble")
+
 	flag.Parse()
 	if Args.ShowHelp == true {
 		Usage()
