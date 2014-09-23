@@ -330,7 +330,7 @@ func (client *Client) udpRecvLoop() {
 		case mumbleproto.UDPMessageVoiceCELTAlpha:
 			fallthrough
 		case mumbleproto.UDPMessageVoiceCELTBeta:
-			if (client.server.Opus) {
+			if client.server.Opus {
 				return
 			}
 			fallthrough
@@ -468,6 +468,7 @@ func (client *Client) tlsRecvLoop() {
 				client.udp = false
 				client.udprecv <- msg.buf
 			} else {
+				log.Printf("Message from client %x", client.Username)
 				client.server.incoming <- msg
 			}
 		}
